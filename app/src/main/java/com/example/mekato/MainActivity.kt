@@ -26,8 +26,11 @@ class MainActivity : AppCompatActivity() {
 
     fun crearArchivo() {
         try {
-            val fileName = "hola.txt"
-            val fileContents = "Hola mundo"
+            val fileName = "exploit.txt"
+            val fileContents = "<?xml version='1.0' encoding='utf-8' standalone='yes' ?>\n" +
+                    "<map>\n" +
+                    "    <string name=\"token\">eko_pathtraversal-PWNED</string>\n" +
+                    "</map>"
 
             val file = File(filesDir, fileName)
             val fileOutputStream = FileOutputStream(file)

